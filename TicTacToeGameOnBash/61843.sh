@@ -49,19 +49,15 @@ function playGame {
 		if [ "$(gameEnd)" == "1" ]
 		then
 			firstWinner=1
-			break 2
-			exit 0
 		elif [ "$(isGameEven)" == "1" ]
 		then
-			break 2
+			break
 			exit 0
 		else
 			askPlayer2 $symbol2
 			if [ "$(gameEnd)" == "1" ]
 			then
 				secondWinner=1
-				break
-				exit 0
 			elif [ "$(isGameEven)" == "1" ]
 			then
 				break
@@ -209,7 +205,7 @@ function appendToTable () {
 			znak4=$(echo "$line3" | cut -d'|' -f3)
 			if [ "$znak3" != " " -a "$znak4" != " " ]
 			then
-				line3=$(echo $line1 | sed s/' '/$znak/1)
+				line3=$(echo $line3 | sed s/' '/$znak/1)
 			elif [ "$znak3" != " " -o "$znak4" != " " ]
 			then
 				line3=$(echo $line3 | sed s/' '/$znak/2)
@@ -237,7 +233,7 @@ function appendToTable () {
 			znak6=$(echo "$line5" | cut -d'|' -f3)
 			if [ "$znak5" != " " -a "$znak6" != " " ]
 			then
-				line5=$(echo $line1 | sed s/' '/$znak/1)
+				line5=$(echo $line5 | sed s/' '/$znak/1)
 			elif [ "$znak5" != " " -o "$znak6" != " " ]
 			then
 				line5=$(echo $line5 | sed s/' '/$znak/2)
